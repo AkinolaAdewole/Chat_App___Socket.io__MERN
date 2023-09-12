@@ -18,6 +18,8 @@ const createChat = async (req, res) => {
   }
 };
 
+
+
 // Function to retrieve chats for a user
 const userChats = async (req, res) => {
   try {
@@ -33,6 +35,8 @@ const userChats = async (req, res) => {
   }
 };
 
+
+
 // Function to find a chat between two specific users
 const findChat = async (req, res) => {
   try {
@@ -40,6 +44,7 @@ const findChat = async (req, res) => {
     const chat = await ChatModel.findOne({
       members: { $all: [req.params.firstId, req.params.secondId] },
     });
+
     // Send a JSON response with the found chat document
     res.status(200).json(chat);
   } catch (error) {
