@@ -29,6 +29,17 @@ app.use(cors());
 app.use(express.static('public')); 
 app.use('/images', express.static('images'));
 
+app.get('/', (req,res)=>{ 
+    res.send('server is ready')
+});  
+
 
 const PORT = process.env.PORT;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+
+app.use('/auth', AuthRoute);
+app.use('/user', UserRoute)
+app.use('/posts', PostRoute)
+app.use('/upload', UploadRoute)
+app.use('/chat', ChatRoute)
+app.use('/message', MessageRoute)
