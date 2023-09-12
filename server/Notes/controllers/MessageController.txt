@@ -1,0 +1,14 @@
+1.
+addMessage: This function is used to add a new message to a chat. It extracts the chatId, senderId, and text from the request body and 
+creates a new message instance with these values. Then, it attempts to save the new message to the database using message.save(). 
+If successful, it responds with the saved message as a JSON response. If there's an error during the process, 
+it sends a 500 (Internal Server Error) response with the error details.
+
+2.
+getMessages: This function is used to retrieve messages for a specific chat. It extracts the chatId from the request parameters and 
+queries the database to find all messages that belong to the specified chatId using MessageModel.find(). It responds with the retrieved 
+messages as a JSON response. If there's an error during the database query, it sends a 500 (Internal Server Error) response with the 
+error details.
+
+These functions allow you to interact with message data in the database, enabling the addition of new messages to a chat and the 
+retrieval of messages for a specific chat.

@@ -1,0 +1,14 @@
+1.
+registerUser: This function is used to register a new user. It hashes the user's password using bcrypt for security, checks if a user 
+with the same username already exists, and then saves the new user to the database. It also generates a JWT token for authentication 
+and responds with the newly registered user and the token.
+
+loginUser: This function handles user login. It first finds a user with the provided username, checks if the provided password matches 
+the stored hashed password using bcrypt.compare, and then generates a JWT token if the login is successful. It responds with the 
+authenticated user and the token. If the username or password is incorrect, it responds with an appropriate error message.
+
+Both functions provide authentication using JWT tokens and handle various error scenarios appropriately.
+
+
+
+
