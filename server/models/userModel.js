@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
 
+//! Define the UserSchema
 const UserSchema = mongoose.Schema(
   {
     username: {
@@ -22,7 +23,7 @@ const UserSchema = mongoose.Schema(
       type: Boolean,
       default: false,
     },
-   profilePicture: String,
+    profilePicture: String,
     coverPicture: String,
     about: String,
     livesIn: String,
@@ -35,5 +36,7 @@ const UserSchema = mongoose.Schema(
   { timestamps: true }
 );
 
+// Create a UserModel based on the UserSchema
 const UserModel = mongoose.model("Users", UserSchema);
+
 export default UserModel;

@@ -1,0 +1,37 @@
+username: A required field representing the user's username or login name.
+
+password: A required field representing the user's hashed password. Passwords should be securely hashed before storing 
+them in the database.
+
+firstname: A required field representing the user's first name.
+
+lastname: A required field representing the user's last name.
+
+isAdmin: A boolean field that indicates whether the user is an admin. It has a default value of false.
+
+profilePicture: A string field that can store a URL or path to the user's profile picture.
+
+coverPicture: A string field that can store a URL or path to the user's cover picture.
+
+about: A string field where the user can provide information about themselves.
+
+livesIn: A string field representing the user's place of residence.
+
+worksAt: A string field representing where the user works or their workplace.
+
+relationship: A string field to specify the user's relationship status.
+
+country: A string field representing the user's country.
+
+followers: An array field that can store the IDs of users who are following this user. 
+This allows for establishing a follower-following relationship.
+
+following: An array field that can store the IDs of users whom this user is following.
+
+timestamps: An option that adds createdAt and updatedAt fields to the user document. 
+These fields automatically record when the document was created and when it was last updated.
+
+
+The UserModel is created using mongoose.model, which allows you to interact with user data in the MongoDB database using this schema. 
+This schema represents the structure of user documents in the database, and you can use the model to 
+perform CRUD (Create, Read, Update, Delete) operations on user data.

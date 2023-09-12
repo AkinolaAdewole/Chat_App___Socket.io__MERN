@@ -1,0 +1,27 @@
+1.
+getUser: Retrieves a user by their ID and removes the password field before responding with the user's details. 
+It handles both success and error cases gracefully.
+
+2.
+getAllUsers: Retrieves all users from the database, removes their password fields, and responds with a list of user details. 
+It handles potential errors.
+
+3.
+updateUser: Updates a user's information, including the password if provided. 
+It checks if the user can update their own account and returns an updated user and a new JWT token.
+
+4.
+deleteUser: Deletes a user's account, but only if the current user is the same as the one being deleted or if the current user is an 
+admin. Handles error cases as well.
+
+5.
+followUser: Allows a user to follow another user, updating their follower and following lists. 
+Handles various scenarios, including checking if the action is forbidden or if the user is already following the target user.
+
+6.
+unfollowUser: Allows a user to unfollow another user, removing the relationship between them. It also handles scenarios where the 
+action is forbidden or if the user is not following the target user.
+
+
+These functions provide basic user management and social networking functionality while considering various access control and 
+error-handling scenarios.
