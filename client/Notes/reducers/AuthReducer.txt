@@ -1,0 +1,24 @@
+It manages the state related to user authentication (authData), loading indicators (loading and updateLoading), 
+and error states (error).
+
+When the authentication process starts ("AUTH_START"), it sets loading to true and clears the error state.
+
+When authentication is successful ("AUTH_SUCCESS"), it saves the user's data to local storage, updates authData, and clears 
+loading and error states.
+
+When authentication fails ("AUTH_FAIL"), it sets loading to false and sets error to true.
+
+When a profile update starts ("UPDATING_START"), it sets updateLoading to true and clears the error state.
+
+When a profile update is successful ("UPDATING_SUCCESS"), it saves the updated user data to local storage, updates authData, and 
+clears updateLoading and error states.
+
+When a profile update fails ("UPDATING_FAIL"), it sets updateLoading to false and sets error to true.
+
+When the user logs out ("LOG_OUT"), it clears local storage and resets the state to its initial values.
+
+When the user follows another user ("FOLLOW_USER"), it updates the following list in the user's data.
+
+When the user unfollows another user ("UNFOLLOW_USER"), it updates the following list in the user's data by removing the unfollowed user.
+
+This reducer is responsible for managing user authentication and profile-related actions, updating the state accordingly.
