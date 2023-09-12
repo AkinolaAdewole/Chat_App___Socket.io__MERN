@@ -1,4 +1,4 @@
-// Import the 'mongoose' library, which is a MongoDB object modeling tool
+// !Import the 'mongoose' library, which is a MongoDB object modeling tool
 import mongoose from "mongoose";
 
 // Define a new Mongoose schema for the 'Chat' model

@@ -1,0 +1,23 @@
+1.
+createPost: Creates a new post by saving the provided post data in the MongoDB database using the PostModel. 
+It returns the created post as a JSON response or an error if there's an issue.
+
+2.
+getPost: Retrieves a specific post by its ID using PostModel.findById and returns it as a JSON response.
+
+3.
+updatePost: Updates an existing post based on the provided post ID and user ID. If the user owns the post, 
+it updates the post's data. If not, it returns an "Authentication failed" error.
+
+4.
+deletePost: Deletes a post by its ID if the user owns the post. If not, it returns an "Action forbidden" error.
+
+5.
+likePost: Allows users to like or dislike a post. If a user has already liked the post, it removes the like; otherwise, it adds a like.
+
+6.
+getTimelinePosts: Retrieves posts for a user's timeline. It fetches posts created by the user and posts created by users they are 
+following, concatenates them, and sorts them by creation date in descending order.
+
+These functions demonstrate basic CRUD operations and interactions with related data for a social media-like application where users 
+can create, view, update, and delete posts, as well as like and see posts from users they follow.

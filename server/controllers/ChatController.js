@@ -1,5 +1,5 @@
 // !Import the 'ChatModel' model
-import ChatModel from "../models/chatModels";
+import ChatModel from "../models/chatModels.js";
 
 // Function to create a new chat
 const createChat = async (req, res) => {
