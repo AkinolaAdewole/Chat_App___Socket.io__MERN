@@ -1,171 +1,75 @@
-import React, { useEffect, useState } from "react";
-import { useRef } from "react";
-import { addMessage, getMessages } from "../../api/MessageRequests";
-import { getUser } from "../../api/UserRequests";
-import "./ChatBox.css";
-import { format } from "timeago.js";
-import InputEmoji from 'react-input-emoji'
+import React from "react";
+import "./ProfileCard.css";
+import Cover from "../../img/cover.jpg";
+import Profile from "../../img/profileImg.jpg";
+import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
+const ProfileCard = ({location}) => {
+  const { user } = useSelector((state) => state.authReducer.authData);
+  const posts = useSelector((state)=>state.postReducer.posts)
+  const serverPublic = process.env.REACT_APP_PUBLIC_FOLDER;
 
-const ChatBox = ({ chat, currentUser, setSendMessage,  receivedMessage }) => {
-  const [userData, setUserData] = useState(null);
-  const [messages, setMessages] = useState([]);
-  const [newMessage, setNewMessage] = useState("");
-
-  const handleChange = (newMessage)=> {
-    setNewMessage(newMessage)
-  }
-
-  // fetching data for header
-  useEffect(() => {
-    const userId = chat?.members?.find((id) => id !== currentUser);
-    const getUserData = async () => {
-      try {
-        const { data } = await getUser(userId);
-        setUserData(data);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-
-    if (chat !== null) getUserData();
-  }, [chat, currentUser]);
-
-  // fetch messages
-  useEffect(() => {
-    const fetchMessages = async () => {
-      try {
-        const { data } = await getMessages(chat._id);
-        setMessages(data);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-
-    if (chat !== null) fetchMessages();
-  }, [chat]);
-
-
-  // Always scroll to last Message
-  useEffect(()=> {
-    scroll.current?.scrollIntoView({ behavior: "smooth" });
-  },[messages])
-
-
-
-  // Send Message
-  const handleSend = async(e)=> {
-    e.preventDefault()
-    const message = {
-      senderId : currentUser,
-      text: newMessage,
-      chatId: chat._id,
-  }
-  const receiverId = chat.members.find((id)=>id!==currentUser);
-  // send message to socket server
-  setSendMessage({...message, receiverId})
-  // send message to database
-  try {
-    const { data } = await addMessage(message);
-    setMessages([...messages, data]);
-    setNewMessage("");
-  }
-  catch
-  {
-    console.log("error")
-  }
-}
-
-// Receive Message from parent component
-useEffect(()=> {
-  console.log("Message Arrived: ", receivedMessage)
-  if (receivedMessage !== null && receivedMessage.chatId === chat._id) {
-    setMessages([...messages, receivedMessage]);
-  }
-
-},[receivedMessage])
-
-
-
-  const scroll = useRef();
-  const imageRef = useRef();
   return (
-    <>
-      <div className="ChatBox-container">
-        {chat ? (
-          <>
-            {/* chat-header */}
-            <div className="chat-header">
-              <div className="follower">
-                <div>
-                  <img
-                    src={
-                      userData?.profilePicture
-                        ? process.env.REACT_APP_PUBLIC_FOLDER +
-                          userData.profilePicture
-                        : process.env.REACT_APP_PUBLIC_FOLDER +
-                          "defaultProfile.png"
-                    }
-                    alt="Profile"
-                    className="followerImage"
-                    style={{ width: "50px", height: "50px" }}
-                  />
-                  <div className="name" style={{ fontSize: "0.9rem" }}>
-                    <span>
-                      {userData?.firstname} {userData?.lastname}
-                    </span>
-                  </div>
-                </div>
-              </div>
-              <hr
-                style={{
-                  width: "95%",
-                  border: "0.1px solid #ececec",
-                  marginTop: "20px",
-                }}
-              />
-            </div>
-            {/* chat-body */}
-            <div className="chat-body" >
-              {messages.map((message) => (
-                <>
-                  <div ref={scroll}
-                    className={
-                      message.senderId === currentUser
-                        ? "message own"
-                        : "message"
-                    }
-                  >
-                    <span>{message.text}</span>{" "}
-                    <span>{format(message.createdAt)}</span>
-                  </div>
-                </>
-              ))}
-            </div>
-            {/* chat-sender */}
-            <div className="chat-sender">
-              <div onClick={() => imageRef.current.click()}>+</div>
-              <InputEmoji
-                value={newMessage}
-                onChange={handleChange}
-              />
-              <div className="send-button button" onClick = {handleSend}>Send</div>
-              <input
-                type="file"
-                name=""
-                id=""
-                style={{ display: "none" }}
-                ref={imageRef}
-              />
-            </div>{" "}
-          </>
-        ) : (
-          <span className="chatbox-empty-message">
-            Tap on a chat to start conversation...
-          </span>
-        )}
+    <div className="ProfileCard">
+      <div className="ProfileImages">
+        <img src={
+            user.coverPicture
+              ? serverPublic + user.coverPicture
+              : serverPublic + "defaultCover.jpg"
+          } alt="CoverImage" />
+        <img
+          src={
+            user.profilePicture
+              ? serverPublic + user.profilePicture
+              : serverPublic + "defaultProfile.png"
+          }
+          alt="ProfileImage"
+        />
       </div>
-    </>
+      <div className="ProfileName">
+        <span>{user.firstname} {user.lastname}</span>
+        <span>{user.worksAt? user.worksAt : 'Write about yourself'}</span>
+      </div>
+
+      <div className="followStatus">
+        <hr />
+        <div>
+          <div className="follow">
+            <span>{user.followers.length}</span>
+            <span>Followers</span>
+          </div>
+          <div className="vl"></div>
+          <div className="follow">
+            <span>{user.following.length}</span>
+            <span>Following</span>
+          </div>
+          {/* for profilepage */}
+          {location === "profilePage" && (
+            <>
+              <div className="vl"></div>
+              <div className="follow">
+                <span>{
+                posts.filter((post)=>post.userId === user._id).length
+                }</span>
+                <span>Posts</span>
+              </div>{" "}
+            </>
+          )}
+        </div>
+        <hr />
+      </div>
+
+      {location === "profilePage" ? (
+        ""
+      ) : (
+        <span>
+          <Link to={`/profile/${user._id}`} style={{ textDecoration: "none", color: "inherit" }}>
+            My Profile
+          </Link>
+        </span>
+      )}
+    </div>
   );
 };
 
-export default ChatBox;
+export default ProfileCard;
