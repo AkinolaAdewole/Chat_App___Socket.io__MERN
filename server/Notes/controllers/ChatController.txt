@@ -1,0 +1,15 @@
+createChat: This function creates a new chat document in the MongoDB database. 
+It takes the sender's and receiver's IDs from the request body, creates a new ChatModel instance with these members, saves it to the 
+database, and returns the created chat as a JSON response. If there's an error during the process, 
+it sends a 500 (Internal Server Error) response.
+
+userChats: This function retrieves chat documents for a specific user. 
+It queries the database for chat documents where the provided userId is in the members array and sends the found chat documents as a 
+JSON response. If there's an error, it sends a 500 response.
+
+findChat: This function finds a chat document between two specific users. 
+It queries the database for a chat document where both firstId and secondId are in the members array and sends the found chat document 
+as a JSON response. If there's an error, it sends a 500 response.
+
+These functions allow you to interact with your chat-related data in the MongoDB database using the Mongoose model and handle 
+potential errors during the process.
