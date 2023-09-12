@@ -4,8 +4,21 @@ import cors from 'cors';
 import dotenv from 'dotenv';
 import mongoose from 'mongoose';
 
-const app = express();
 dotenv.config();
+
+import connectDB from './config/db.js';
+
+// routes
+import AuthRoute from './routes/AuthRoute.js'
+import UserRoute from './routes/UserRoute.js'
+import PostRoute from './routes/PostRoute.js'
+import UploadRoute from './routes/UploadRoute.js'
+import ChatRoute from './routes/ChatRoute.js'
+import MessageRoute from './routes/MessageRoute.js'
+
+
+connectDB();
+const app = express();
 
 //! MiddleWare
 app.use(bodyParser.json({ limit : "30mb", extended: true}));
@@ -15,15 +28,6 @@ app.use(cors());
 // to serve images inside public folder
 app.use(express.static('public')); 
 app.use('/images', express.static('images'));
-
-
-// routes
-import AuthRoute from './routes/AuthRoute.js'
-import UserRoute from './routes/UserRoute.js'
-import PostRoute from './routes/PostRoute.js'
-import UploadRoute from './routes/UploadRoute.js'
-import ChatRoute from './routes/ChatRoute.js'
-import MessageRoute from './routes/MessageRoute.js'
 
 
 const PORT = process.env.PORT;
