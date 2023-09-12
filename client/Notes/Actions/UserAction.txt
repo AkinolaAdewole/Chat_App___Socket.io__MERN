@@ -1,0 +1,22 @@
+1.
+updateUser: This action creator is used to update a user's information. 
+It dispatches an action of type "UPDATING_START" to indicate the start of the updating process. 
+It then makes an API request using UserApi.updateUser(id, formData) to send the updated user data to the server. 
+If the request is successful, it dispatches an action of type "UPDATING_SUCCESS" with the updated data. 
+If there's an error, it dispatches an action of type "UPDATING_FAIL" to handle the failure.
+
+2.
+followUser: This action creator is used to follow another user. 
+It dispatches an action of type "FOLLOW_USER" to indicate that the user is following the specified user. 
+It then makes an API request using UserApi.followUser(id, data) to follow the user. This action creator doesn't handle success or 
+failure explicitly but triggers the API call.
+
+3.
+unfollowUser: This action creator is used to unfollow another user. 
+It dispatches an action of type "UNFOLLOW_USER" to indicate that the user is unfollowing the specified user. 
+It then makes an API request using UserApi.unfollowUser(id, data) to unfollow the user. Like the previous action, 
+this one also doesn't handle success or failure explicitly but triggers the API call.
+
+These action creators encapsulate the logic for making API requests and dispatching Redux actions to update the application state 
+based on the results of these requests. The exact behavior of the reducers that handle these actions will determine how the state 
+changes in response to these actions.
