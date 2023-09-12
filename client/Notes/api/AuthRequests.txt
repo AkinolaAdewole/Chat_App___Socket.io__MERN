@@ -1,0 +1,20 @@
+import axios from 'axios';: Import the Axios library, which is a popular JavaScript library for making HTTP requests from the browser 
+or Node.js.
+
+const API = axios.create({ baseURL: 'http://localhost:5000' });: Create an Axios instance named API with a specified base URL. 
+The base URL is set to 'http://localhost:5000', which means that all requests made using this instance will be 
+relative to this base URL. In this case, it's configured to communicate with a backend server running locally on port 5000. 
+You can change this base URL to the appropriate server address for your application.
+
+export const logIn = (formData) => API.post('/auth/login', formData);: Export a function named logIn that takes a formData object as 
+an argument. This function uses the Axios instance API to send a POST request to the '/auth/login' endpoint on the server. 
+The formData object likely contains user credentials (e.g., username and password) for the login process.
+
+export const signUp = (formData) => API.post('/auth/register', formData);: Export a function named signUp that also takes a formData 
+object as an argument. This function uses the same Axios instance API to send a POST request to the '/auth/register' endpoint on the 
+server. The formData object likely contains user registration data (e.g., username, password, email) for the signup process.
+
+By creating an Axios instance with a base URL and defining these functions, you've encapsulated the configuration for making API 
+requests to your backend server. This separation of concerns allows you to easily switch between 
+different base URLs (e.g., for development, staging, or production environments) and reuse these functions throughout your application 
+to interact with your backend API.
