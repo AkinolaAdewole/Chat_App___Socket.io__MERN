@@ -57,7 +57,7 @@ const Auth = () => {
 
         <div className="Webname">
           <h1>Akinola Adewole</h1>
-          <h6>Explore the ideas throughout the world</h6>
+          <h4>Engage with diverse perspectives.</h4>
         </div>
       </div>
 
