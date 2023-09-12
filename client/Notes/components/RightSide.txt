@@ -1,0 +1,9 @@
+This code defines a React component called RightSide.
+The component manages the state of a modalOpened variable using the useState hook to control the visibility of the share modal.
+Inside the return statement, the component renders the following:
+A side navbar (NavIcons) component.
+A TrendCard component.
+A "Share" button with an onClick event that toggles the modalOpened state to true, opening the share modal when clicked.
+A ShareModal component that is conditionally rendered based on the modalOpened state. This modal allows users to share content.
+The component's structure suggests it is part of a larger user interface, providing quick access to navigation icons, trending
+ content, and sharing functionality.
