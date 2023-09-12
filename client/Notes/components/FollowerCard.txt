@@ -1,0 +1,10 @@
+This code defines a React component called FollowersCard.
+The component manages the state of modalOpened, which controls the visibility of a followers modal, and persons, 
+which stores a list of users.
+The useSelector hook is used to access the user data from the Redux store.
+Inside the useEffect hook, an API request is made to fetch a list of users (persons) and populate the persons state when 
+the component mounts.
+The component renders a list of users as User components, excluding the current user.
+It also renders a "Show more" link if the location prop is not provided, allowing users to open the followers modal.
+The FollowersModal component is conditionally rendered based on the modalOpened state, allowing users to view more followers 
+when the modal is open.
