@@ -1,6 +1,6 @@
 import React, { useRef, useState } from "react";
 import ChatBox from "../../components/ChatBox/ChatBox";
-import Conversation from "../../components/Coversation/Conversation";
+import Conversation from "../../components/Conversation/Converstion";
 import LogoSearch from "../../components/LogoSearch/LogoSearch";
 import NavIcons from "../../components/NavIcons/NavIcons";
 import "./Chat.css";
