@@ -1,0 +1,12 @@
+his code defines a React component called FollowersModal.
+The component uses the Mantine library's Modal component to create a modal for displaying followers.
+It receives two props: modalOpened (a boolean that controls the visibility of the modal) and 
+setModalOpened (a function to update the modalOpened state).
+The useMantineTheme hook is used to access the current theme from Mantine.
+Inside the Modal component:
+overlayColor, overlayOpacity, and overlayBlur are set based on the theme to control the appearance of the modal overlay.
+size determines the width of the modal.
+opened is controlled by the modalOpened prop, determining whether the modal is open or closed.
+onClose is set to setModalOpened(false), allowing the modal to be closed when clicked.
+Within the Modal component, it renders the FollowersCard component with the location prop set to "modal," indicating that it's being 
+rendered within the modal for a specific context.
