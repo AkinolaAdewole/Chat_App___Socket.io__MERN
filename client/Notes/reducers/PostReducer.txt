@@ -1,0 +1,17 @@
+It manages the state related to posts, including the posts array, loading indicators (loading and uploading), and error states (error).
+
+When the post upload process starts ("UPLOAD_START"), it sets uploading to true and clears the error state.
+
+When a post upload is successful ("UPLOAD_SUCCESS"), it adds the new post to the beginning of the posts array, clears uploading, 
+and clears the error state.
+
+When a post upload fails ("UPLOAD_FAIL"), it sets uploading to false and sets error to true.
+
+When the process of retrieving posts starts ("RETREIVING_START"), it sets loading to true and clears the error state.
+
+When retrieving posts is successful ("RETREIVING_SUCCESS"), it replaces the current posts array with the received posts data, clears 
+loading, and clears the error state.
+
+When retrieving posts fails ("RETREIVING_FAIL"), it sets loading to false and sets error to true.
+
+This reducer is responsible for managing post-related actions, updating the state accordingly, and handling post uploading and retrieval.
