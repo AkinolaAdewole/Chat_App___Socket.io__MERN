@@ -1,0 +1,26 @@
+It imports various libraries and components, including icons, modals, Redux hooks, and API functions.
+
+Inside the component function, it initializes state variables using the useState hook for managing the 
+modal state (modalOpened) and storing the profile user's data (profileUser).
+
+It uses the useParams hook from React Router to extract the id parameter from the URL, representing the user profile being viewed.
+
+It fetches the authenticated user's data from the Redux store using the useSelector hook.
+
+There's a handleLogOut function that dispatches a Redux action (logout) when the "Log Out" button is clicked.
+
+Inside the useEffect hook, it fetches the profile user's data from the API when the component mounts. If the profile being viewed is 
+the authenticated user's own profile, it uses the user data from the Redux store (user). If viewing another user's profile, 
+it fetches their data using the UserApi.getUser function.
+
+The component then renders the profile information, including the profile edit icon (if viewing the authenticated user's own profile), 
+status, location, workplace, and a "Log Out" button.
+
+When the edit icon is clicked, it opens a profile edit modal (ProfileModal) with the user's data pre-filled for editing.
+
+Overall, this component is responsible for displaying profile information, handling profile editing for the authenticated user, and 
+providing a "Log Out" button for logging out of the application.
+
+
+
+
