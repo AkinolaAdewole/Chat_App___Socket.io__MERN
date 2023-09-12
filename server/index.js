@@ -33,6 +33,10 @@ app.get('/', (req,res)=>{
     res.send('server is ready')
 });  
 
+app.get('/auth', (req, res)=>{
+    res.send('server is ready') 
+});
+
 
 const PORT = process.env.PORT;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
