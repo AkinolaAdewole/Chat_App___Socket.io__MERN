@@ -1,0 +1,25 @@
+It imports the jsonwebtoken library for JWT handling and the dotenv library to load environment variables.
+
+It retrieves the JWT secret key from the environment variables using process.env.JWTKEY.
+
+The authMiddleWare function is defined as an asynchronous middleware that takes req, res, and next as parameters. 
+req represents the incoming request, res is the response object and next is a callback function to pass control to the next 
+middleware or route handler.
+
+Inside the try block, it attempts to extract the JWT token from the "Authorization" header of the incoming request. 
+The header typically looks like "Bearer <token>", so it splits the header string to get the actual token.
+
+If a token is found, it attempts to verify the token's authenticity using the jwt.verify method, passing in the token and 
+the secret key.
+
+If the token is successfully verified, it extracts the user ID (decoded.id) from the token and attaches it to the 
+request body as _id. This allows other middleware or route handlers downstream to access the user's ID for further processing.
+
+Finally, it calls the next() function to pass control to the next middleware or route handler in the request processing pipeline.
+
+Note: If an error occurs during token verification or if there's no token in the request, the error is caught and logged to the console.
+
+
+This middleware is designed to check the authorization header of incoming requests for a valid JWT, verify it and 
+provide the user's ID to subsequent handlers if the JWT is valid. It can be used to protect routes that require 
+authentication in your application.
