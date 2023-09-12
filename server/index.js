@@ -24,3 +24,7 @@ import PostRoute from './routes/PostRoute.js'
 import UploadRoute from './routes/UploadRoute.js'
 import ChatRoute from './routes/ChatRoute.js'
 import MessageRoute from './routes/MessageRoute.js'
+
+
+const PORT = process.env.PORT;
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
