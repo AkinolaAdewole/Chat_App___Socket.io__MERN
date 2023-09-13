@@ -14,8 +14,11 @@ const RightSide = () => {
       {/* Side Navbar */}
       <NavIcons />
       
-      {/* TrendCard */}
-      <TrendCard />
+      <div className="container">
+              {/* TrendCard */}
+            <TrendCard />
+      </div>
+
 
       {/* Share button */}
       <button className="button r-button" onClick={() => setModalOpened(true)}>

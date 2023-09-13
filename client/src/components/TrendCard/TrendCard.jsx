@@ -3,9 +3,8 @@ import './TrendCard.css'
 import {TrendData} from '../../Data/TrendData.js'
 const TrendCard = () => {
   return (
-   <div className="TrendCard">
+   <div className="TrendCard shadow">
        <h3>Trends</h3>
-
 
        {TrendData.map((trend, id)=>{
             return(
