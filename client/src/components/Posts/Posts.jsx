@@ -27,13 +27,15 @@ const Posts = () => {
   
   // Render the Posts component
   return (
-    <div className="Posts">
-      {loading
-        ? "Fetching posts...."
-        : posts.map((post, id) => {
-            return <Post data={post} key={id} />;
-          })}
-    </div>
+   <div className="container">
+          <div className="Posts shadow">
+            {loading
+              ? "Fetching posts...."
+              : posts.map((post, id) => {
+                  return <Post data={post} key={id} />;
+                })}
+          </div>
+   </div>
   );
 };
 
