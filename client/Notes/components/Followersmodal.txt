@@ -1,4 +1,4 @@
-his code defines a React component called FollowersModal.
+This code defines a React component called FollowersModal.
 The component uses the Mantine library's Modal component to create a modal for displaying followers.
 It receives two props: modalOpened (a boolean that controls the visibility of the modal) and 
 setModalOpened (a function to update the modalOpened state).
