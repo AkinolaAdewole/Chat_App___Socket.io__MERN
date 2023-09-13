@@ -38,7 +38,7 @@ const InfoCard = () => {
   }, [user, profileUserId]); // useEffect depends on 'user' and 'profileUserId'
 
   return (
-    <div className="InfoCard">
+    <div className="InfoCard shadow">
       <div className="infoHead">
         <h4>Profile Info</h4>
         {user._id === profileUserId ? (

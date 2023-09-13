@@ -7,10 +7,10 @@ import "./Profile.css";
 const Profile = () => {
   return (
     <div className="Profile">
-      <ProfileLeft />
-      <div className="Profile-center">
+       <ProfileLeft />
+      <div className="Profile-center mt-2">
         <ProfileCard location = 'profilePage'/>
-      <PostSide/>
+        <PostSide/>
       </div>
       <RightSide/>
     </div>
