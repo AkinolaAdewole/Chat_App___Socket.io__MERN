@@ -24,26 +24,28 @@ const FollowersCard = ({ location }) => {
   }, []);
 
   return (
-    <div className="FollowersCard">
-      <h4>People you may know</h4>
+      <div className="container">
+          <div className="FollowersCard">
+            <h4>People you may know</h4>
 
-      {persons.map((person, id) => {
-        // Render a User component for each person (user) in the list, excluding the current user
-        if (person._id !== user._id) return <User person={person} key={id} />;
-      })}
-      {/* Render a "Show more" link if the location prop is not provided */}
-      {!location ? (
-        <span onClick={() => setModalOpened(true)}>Show more</span>
-      ) : (
-        ""
-      )}
+            {persons.map((person, id) => {
+              // Render a User component for each person (user) in the list, excluding the current user
+              if (person._id !== user._id) return <User person={person} key={id} />;
+            })}
+            {/* Render a "Show more" link if the location prop is not provided */}
+            {!location ? (
+              <span onClick={() => setModalOpened(true)}>Show more</span>
+            ) : (
+              ""
+            )}
 
-      {/* FollowersModal component for displaying more followers */}
-      <FollowersModal
-        modalOpened={modalOpened}
-        setModalOpened={setModalOpened}
-      />
-    </div>
+            {/* FollowersModal component for displaying more followers */}
+            <FollowersModal
+              modalOpened={modalOpened}
+              setModalOpened={setModalOpened}
+            />
+          </div>
+      </div>
   );
 };
 
