@@ -4,9 +4,6 @@ import cors from 'cors';
 import dotenv from 'dotenv';
 import mongoose from 'mongoose';
 
-dotenv.config();
-
-import connectDB from './config/db.js';
 
 // routes
 import AuthRoute from './routes/AuthRoute.js'
@@ -17,10 +14,9 @@ import ChatRoute from './routes/ChatRoute.js'
 import MessageRoute from './routes/MessageRoute.js'
 
 
-connectDB();
 const app = express();
 
-//! MiddleWare
+//! MiddleWare 
 app.use(bodyParser.json({ limit : "30mb", extended: true}));
 app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }));
 app.use(cors());
@@ -33,13 +29,15 @@ app.get('/', (req,res)=>{
     res.send('server is ready')
 });  
 
-app.get('/auth', (req, res)=>{
-    res.send('server is ready') 
-});
-
-
+// connectDB();
+dotenv.config();
 const PORT = process.env.PORT;
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+
+const CONNECTION =process.env.MongoDB_URI;
+mongoose
+  .connect(CONNECTION, { useNewUrlParser: true, useUnifiedTopology: true })
+  .then(() => app.listen(PORT, () => console.log(`Listening at Port ${PORT}`)))
+  .catch((error) => console.log(`${error} did not connect`));
 
 app.use('/auth', AuthRoute);
 app.use('/user', UserRoute)

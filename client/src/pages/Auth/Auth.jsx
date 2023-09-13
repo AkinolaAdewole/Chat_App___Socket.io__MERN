@@ -50,9 +50,8 @@ const Auth = () => {
 
   return (
     <div className="bg">
-          <div className="container Auth">
+        <div className="container Auth">
             {/* left side */}
-
             <div className="row">
                 <div className=" col-md-6  a-left">
                   <img src={Logo} alt="" />
@@ -62,11 +61,11 @@ const Auth = () => {
                     <h6>Explore the ideas throughout the world</h6>
                   </div>
                 </div>
-            </div>
+           
 
             {/* right form side */}
 
-            <div className=" col-md-6  shadow a-right">
+            <div className=" col-md-6 a-right">
               <form className="infoForm authForm" onSubmit={handleSubmit}>
                 <h3>{isSignUp ? "Register" : "Login"}</h3>
                 {isSignUp && (
@@ -76,7 +75,7 @@ const Auth = () => {
                         required
                         type="text"
                         placeholder="First Name"
-                        className="infoInput"
+                        className="infoInput form-control"
                         name="firstname"
                         value={data.firstname}
                         onChange={handleChange}
@@ -88,7 +87,7 @@ const Auth = () => {
                         required
                         type="text"
                         placeholder="Last Name"
-                        className="infoInput"
+                        className="infoInput form-control"
                         name="lastname"
                         value={data.lastname}
                         onChange={handleChange}
@@ -102,7 +101,7 @@ const Auth = () => {
                     required
                     type="text"
                     placeholder="Username"
-                    className="infoInput"
+                    className="infoInput form-control"
                     name="username"
                     value={data.username}
                     onChange={handleChange}
@@ -113,7 +112,7 @@ const Auth = () => {
                     <input
                       required
                       type="password"
-                      className="infoInput"
+                      className="infoInput form-control"
                       placeholder="Password"
                       name="password"
                       value={data.password}
@@ -125,7 +124,7 @@ const Auth = () => {
                      <input
                       required
                       type="password"
-                      className="infoInput"
+                      className="infoInput form-control"
                       name="confirmpass"
                       placeholder="Confirm Password"
                       onChange={handleChange}
@@ -172,6 +171,7 @@ const Auth = () => {
               </form>
             </div>
           </div>
+       </div>
     </div>
   );
 };
