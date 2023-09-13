@@ -22,6 +22,8 @@ const Auth = () => {
 
   const [confirmPass, setConfirmPass] = useState(true);
 
+  // const dispatch = useDispatch()
+
   // Reset Form
   const resetForm = () => {
     setData(initialState);
@@ -47,121 +49,129 @@ const Auth = () => {
   };
 
   return (
-    <div className="container Auth">
-      <div className="row">
-        {/* Left side */}
-        <div className="col-md-6 a-left">
-          <img src={Logo} alt="" />
-          <div className="Webname">
-            <h1>Akinola Adewole</h1>
-            <h4>Engage with diverse perspectives.</h4>
+    <div className="bg">
+          <div className="container Auth">
+            {/* left side */}
+
+            <div className="row">
+                <div className=" col-md-6  a-left">
+                  <img src={Logo} alt="" />
+
+                  <div className="Webname">
+                    <h1>Akinola Adewole</h1>
+                    <h6>Explore the ideas throughout the world</h6>
+                  </div>
+                </div>
+            </div>
+
+            {/* right form side */}
+
+            <div className=" col-md-6  shadow a-right">
+              <form className="infoForm authForm" onSubmit={handleSubmit}>
+                <h3>{isSignUp ? "Register" : "Login"}</h3>
+                {isSignUp && (
+                  <div>
+                    <div className="mb-3">
+                      <input
+                        required
+                        type="text"
+                        placeholder="First Name"
+                        className="infoInput"
+                        name="firstname"
+                        value={data.firstname}
+                        onChange={handleChange}
+                      />
+                    </div>
+
+                    <div className="mb-3">
+                      <input
+                        required
+                        type="text"
+                        placeholder="Last Name"
+                        className="infoInput"
+                        name="lastname"
+                        value={data.lastname}
+                        onChange={handleChange}
+                      />
+                    </div>
+                  </div>
+                )}
+
+                <div className="mb-3">
+                  <input
+                    required
+                    type="text"
+                    placeholder="Username"
+                    className="infoInput"
+                    name="username"
+                    value={data.username}
+                    onChange={handleChange}
+                  />
+                </div>
+                <div>
+                  <div className="mb-3">
+                    <input
+                      required
+                      type="password"
+                      className="infoInput"
+                      placeholder="Password"
+                      name="password"
+                      value={data.password}
+                      onChange={handleChange}
+                    />
+                  </div>
+                  {isSignUp && (
+                   <div className="mb-3">
+                     <input
+                      required
+                      type="password"
+                      className="infoInput"
+                      name="confirmpass"
+                      placeholder="Confirm Password"
+                      onChange={handleChange}
+                    />
+                   </div>
+                  )}
+                </div>
+
+                <span
+                  style={{
+                    color: "red",
+                    fontSize: "12px",
+                    alignSelf: "flex-end",
+                    marginRight: "5px",
+                    display: confirmPass ? "none" : "block",
+                  }}
+                >
+                  *Confirm password is not same
+                </span>
+                <div>
+                  <span
+                    style={{
+                      fontSize: "12px",
+                      cursor: "pointer",
+                      textDecoration: "underline",
+                    }}
+                    onClick={() => {
+                      resetForm();
+                      setIsSignUp((prev) => !prev);
+                    }}
+                  >
+                    {isSignUp
+                      ? "Already have an account Login"
+                      : "Don't have an account Sign up"}
+                  </span>
+                  <button
+                    className="button infoButton"
+                    type="Submit"
+                    disabled={loading}
+                  >
+                    {loading ? "Loading..." : isSignUp ? "SignUp" : "Login"}
+                  </button>
+                </div>
+              </form>
+            </div>
           </div>
-        </div>
-
-        {/* Right form side */}
-        <div className="col-md-6 a-right">
-          <form className="infoForm authForm" onSubmit={handleSubmit}>
-            <h3>{isSignUp ? "Register" : "Login"}</h3>
-            {isSignUp && (
-              <div>
-                <div className="mb-3">
-                  <input
-                    required
-                    type="text"
-                    placeholder="First Name"
-                    className="form-control"
-                    name="firstname"
-                    value={data.firstname}
-                    onChange={handleChange}
-                  />
-                </div>
-                <div className="mb-3">
-                  <input
-                    required
-                    type="text"
-                    placeholder="Last Name"
-                    className="form-control"
-                    name="lastname"
-                    value={data.lastname}
-                    onChange={handleChange}
-                  />
-                </div>
-              </div>
-            )}
-
-            <div className="mb-3">
-              <input
-                required
-                type="text"
-                placeholder="Username"
-                className="form-control"
-                name="username"
-                value={data.username}
-                onChange={handleChange}
-              />
-            </div>
-            <div className="mb-3">
-              <input
-                required
-                type="password"
-                className="form-control"
-                placeholder="Password"
-                name="password"
-                value={data.password}
-                onChange={handleChange}
-              />
-            </div>
-            {isSignUp && (
-              <div className="mb-3">
-                <input
-                  required
-                  type="password"
-                  className="form-control"
-                  name="confirmpass"
-                  placeholder="Confirm Password"
-                  onChange={handleChange}
-                />
-              </div>
-            )}
-
-            <span
-              style={{
-                color: "red",
-                fontSize: "12px",
-                alignSelf: "flex-end",
-                marginRight: "5px",
-                display: confirmPass ? "none" : "block",
-              }}
-            >
-              *Confirm password is not the same
-            </span>
-            <div>
-              <span
-                style={{
-                  fontSize: "12px",
-                  cursor: "pointer",
-                  textDecoration: "underline",
-                }}
-                onClick={() => {
-                  resetForm();
-                  setIsSignUp((prev) => !prev);
-                }}
-              >
-                {isSignUp
-                  ? "Already have an account? Login"
-                  : "Don't have an account? Sign up"}
-              </span>
-              <button
-                className="btn btn-primary"
-                type="Submit"
-                disabled={loading}
-              >
-                {loading ? "Loading..." : isSignUp ? "Sign Up" : "Login"}
-              </button>
-            </div>
-          </form>
-        </div>
-      </div>
     </div>
   );
 };

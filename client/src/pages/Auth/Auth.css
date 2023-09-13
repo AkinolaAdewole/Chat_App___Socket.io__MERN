@@ -1,3 +1,7 @@
+.bg{
+    background-color: #F6F6F4;
+}
+
 .Auth {
     display: flex;
     align-items: center;
