@@ -14,10 +14,11 @@ const ProfileCard = ({ location }) => {
   const serverPublic = process.env.REACT_APP_PUBLIC_FOLDER;
 
   return (
-    <div className="ProfileCard container"> {/* Main container div */}
+    <div className="ProfileCard shadow"> {/* Main container div */}
       <div className="ProfileImages">
         {/* Display user's cover picture or a default image */}
         <img
+            className="img1"
           src={
             user.coverPicture
               ? serverPublic + user.coverPicture

@@ -1,5 +1,5 @@
 .ProfileCard {
-    border-radius: 1.5rem;
+    border-radius: 30px;
     display: flex;
     flex-direction: column;
     position: relative;
@@ -15,6 +15,11 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+  }
+
+  .img1{
+    width: 100%;
+    height: 100px;
   }
   
   .ProfileImages > img:nth-of-type(1) {
