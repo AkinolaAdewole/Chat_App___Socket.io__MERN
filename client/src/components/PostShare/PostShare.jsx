@@ -60,64 +60,66 @@ const PostShare = () => {
     desc.current.value = "";
   };
   return (
-    <div className="PostShare">
-      <img
-        src={
-          user.profilePicture
-            ? serverPublic + user.profilePicture
-            : serverPublic + "defaultProfile.jpg"
-        }
-        alt="Profile"
-      />
-      <div>
-        <input
-          type="text"
-          placeholder="What's happening?"
-          required
-          ref={desc}
-        />
-        <div className="postOptions">
-          <div
-            className="option"
-            style={{ color: "var(--photo)" }}
-            onClick={() => imageRef.current.click()}
-          >
-            <UilScenery />
-            Photo
-          </div>
+    <div className="container">
+        <div className="PostShare shadow mt-3">
+              <img
+                src={
+                  user.profilePicture
+                    ? serverPublic + user.profilePicture
+                    : serverPublic + "defaultProfile.jpg"
+                }
+                alt="Profile"
+              />
+              <div>
+                <input
+                  type="text"
+                  placeholder="What's happening?"
+                  required
+                  ref={desc}
+                />
+                <div className="postOptions">
+                  <div
+                    className="option"
+                    style={{ color: "var(--photo)" }}
+                    onClick={() => imageRef.current.click()}
+                  >
+                    <UilScenery />
+                    Photo
+                  </div>
 
-          <div className="option" style={{ color: "var(--video)" }}>
-            <UilPlayCircle />
-            Video
-          </div>
-          <div className="option" style={{ color: "var(--location)" }}>
-            <UilLocationPoint />
-            Location
-          </div>
-          <div className="option" style={{ color: "var(--shedule)" }}>
-            <UilSchedule />
-            Shedule
-          </div>
-          <button
-            className="button ps-button"
-            onClick={handleUpload}
-            disabled={loading}
-          >
-            {loading ? "uploading" : "Share"}
-          </button>
+                  <div className="option" style={{ color: "var(--video)" }}>
+                    <UilPlayCircle />
+                    Video
+                  </div>
+                  <div className="option" style={{ color: "var(--location)" }}>
+                    <UilLocationPoint />
+                    Location
+                  </div>
+                  <div className="option" style={{ color: "var(--shedule)" }}>
+                    <UilSchedule />
+                    Shedule
+                  </div>
+                  <button
+                    className="button ps-button"
+                    onClick={handleUpload}
+                    disabled={loading}
+                  >
+                    {loading ? "uploading" : "Share"}
+                  </button>
 
-          <div style={{ display: "none" }}>
-            <input type="file" ref={imageRef} onChange={onImageChange} />
-          </div>
-        </div>
+                  <div style={{ display: "none" }}>
+                    <input type="file" ref={imageRef} onChange={onImageChange} />
+                  </div>
+                </div>
 
-        {image && (
-          <div className="previewImage">
-            <UilTimes onClick={() => setImage(null)} />
-            <img src={URL.createObjectURL(image)} alt="preview" />
-          </div>
-        )}
-      </div>
+                {image && (
+                  <div className="previewImage">
+                    <UilTimes onClick={() => setImage(null)} />
+                    <img src={URL.createObjectURL(image)} alt="preview" />
+                  </div>
+                )}
+              </div>
+            </div>
     </div>
   );
 };

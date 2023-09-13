@@ -25,7 +25,7 @@ const FollowersCard = ({ location }) => {
 
   return (
     <div className="FollowersCard">
-      <h3>People you may know</h3>
+      <h4>People you may know</h4>
 
       {persons.map((person, id) => {
         // Render a User component for each person (user) in the list, excluding the current user

@@ -14,82 +14,83 @@ const ProfileCard = ({ location }) => {
   const serverPublic = process.env.REACT_APP_PUBLIC_FOLDER;
 
   return (
-    <div className="ProfileCard shadow"> {/* Main container div */}
-      <div className="ProfileImages">
-        {/* Display user's cover picture or a default image */}
-        <img
-            className="img1"
-          src={
-            user.coverPicture
-              ? serverPublic + user.coverPicture
-              : serverPublic + "defaultCover.jpg"
-          }
-          alt="CoverImage"
-        />
-        {/* Display user's profile picture or a default image */}
-        <img
-          src={
-            user.profilePicture
-              ? serverPublic + user.profilePicture
-              : serverPublic + "defaultProfile.jpg"
-          }
-          alt="ProfileImage"
-        />
-      </div>
-
-      <div className="ProfileName">
-        {/* Display user's name and workplace (if available) */}
-        <span>
-          {user.firstname} {user.lastname}
-        </span>
-        <span>{user.worksAt ? user.worksAt : "Write about yourself"}</span>
-      </div>
-
-      <div className="followStatus">
-        <hr />
-        <div>
-          <div className="follow">
-            {/* Display the number of followers */}
-            <span>{user.followers.length}</span>
-            <span>Followers</span>
-          </div>
-          <div className="vl"></div> {/* Vertical separator */}
-          <div className="follow">
-            {/* Display the number of users being followed */}
-            <span>{user.following.length}</span>
-            <span>Following</span>
-          </div>
-          {/* Display the number of posts (only for profile page) */}
-          {location === "profilePage" && (
-            <>
-              <div className="vl"></div> {/* Vertical separator */}
-              <div className="follow">
-                <span>
-                  {
-                    posts.filter((post) => post.userId === user._id).length
+    <div className="container">
+        <div className="ProfileCard shadow"> {/* Main container div */}
+              <div className="ProfileImages">
+                {/* Display user's cover picture or a default image */}
+                <img
+                  src={
+                    user.coverPicture
+                      ? serverPublic + user.coverPicture
+                      : serverPublic + "defaultCover.jpg"
                   }
-                </span>
-                <span>Posts</span>
-              </div>{" "}
-            </>
-          )}
-        </div>
-        <hr />
-      </div>
+                  alt="CoverImage"
+                />
+                {/* Display user's profile picture or a default image */}
+                <img
+                  src={
+                    user.profilePicture
+                      ? serverPublic + user.profilePicture
+                      : serverPublic + "defaultProfile.jpg"
+                  }
+                  alt="ProfileImage"
+                />
+              </div>
 
-      {/* Display a link to the user's profile (if not on the profile page) */}
-      {location === "profilePage" ? (
-        ""
-      ) : (
-        <span>
-          <Link
-            to={`/profile/${user._id}`}
-            style={{ textDecoration: "none", color: "inherit" }}
-          >
-            My Profile
-          </Link>
-        </span>
-      )}
+              <div className="ProfileName">
+                {/* Display user's name and workplace (if available) */}
+                <span>
+                  {user.firstname} {user.lastname}
+                </span>
+                <span>{user.worksAt ? user.worksAt : "Write about yourself"}</span>
+              </div>
+
+              <div className="followStatus">
+                <hr />
+                <div>
+                  <div className="follow">
+                    {/* Display the number of followers */}
+                    <span>{user.followers.length}</span>
+                    <span>Followers</span>
+                  </div>
+                  <div className="vl"></div> {/* Vertical separator */}
+                  <div className="follow">
+                    {/* Display the number of users being followed */}
+                    <span>{user.following.length}</span>
+                    <span>Following</span>
+                  </div>
+                  {/* Display the number of posts (only for profile page) */}
+                  {location === "profilePage" && (
+                    <>
+                      <div className="vl"></div> {/* Vertical separator */}
+                      <div className="follow">
+                        <span>
+                          {
+                            posts.filter((post) => post.userId === user._id).length
+                          }
+                        </span>
+                        <span>Posts</span>
+                      </div>{" "}
+                    </>
+                  )}
+                </div>
+                <hr />
+              </div>
+
+              {/* Display a link to the user's profile (if not on the profile page) */}
+              {location === "profilePage" ? (
+                ""
+              ) : (
+                <span>
+                  <Link
+                    to={`/profile/${user._id}`}
+                    style={{ textDecoration: "none", color: "inherit" }}
+                  >
+                    My Profile
+                  </Link>
+                </span>
+              )}
+        </div>
     </div>
   );
 };
