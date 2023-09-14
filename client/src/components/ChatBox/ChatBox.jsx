@@ -16,15 +16,16 @@ const ChatBox = ({ chat, currentUser, setSendMessage,  receivedMessage }) => {
   const handleChange = (newMessage)=> {
     setNewMessage(newMessage)
   }
-    useEffect(()=>{
-      const getuzar= async()=>{
-        const { data } = await getAllUser();
-        setPersons(data);
-        console.log(persons);
-      }
 
-      getuzar();
-    },[])
+
+    // useEffect(()=>{
+    //   const getuzar= async()=>{
+    //     const { data } = await getAllUser();
+    //     setPersons(data);
+    //     console.log(persons);
+    //   }
+    //   getuzar();
+    // },[]);
 
   // fetching data for header
   useEffect(() => {
@@ -38,10 +39,13 @@ const ChatBox = ({ chat, currentUser, setSendMessage,  receivedMessage }) => {
       } catch (error) {
         console.log(error);
       }
-    };
+    }; 
+      //  getUserData();
 
-    getUserData();
-  }, []);
+    if (chat !== null) getUserData();
+  }, [chat, currentUser]);
+
+
 
   // fetch messages
   useEffect(() => {
@@ -90,7 +94,7 @@ const ChatBox = ({ chat, currentUser, setSendMessage,  receivedMessage }) => {
 
 // Receive Message from parent component
 useEffect(()=> {
-  console.log("Message Arrived: ", receivedMessage)
+  // console.log("Message Arrived: ", receivedMessage)
   if (receivedMessage !== null && receivedMessage.chatId === chat._id) {
     setMessages([...messages, receivedMessage]);
   }

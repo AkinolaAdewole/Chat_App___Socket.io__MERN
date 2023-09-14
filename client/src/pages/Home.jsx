@@ -5,7 +5,7 @@ import RightSide from "../components/RightSide/RightSide";
 import "./Home.css";
 import { getAllUser } from "../api/UserRequests";
 const Home = () => {
-  console.log(getAllUser);
+  // console.log(getAllUser);
   return (
     <div className="Home">
       <ProfileSide/>

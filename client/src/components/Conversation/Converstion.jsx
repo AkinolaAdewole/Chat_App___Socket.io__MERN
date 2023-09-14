@@ -10,7 +10,7 @@ const Conversation = ({ data, currentUser, online }) => {
   // Redux dispatch hook for dispatching actions
   const dispatch = useDispatch();
 
-  console.log(getUser);
+  // console.log(getUser);
 
   useEffect(() => {
     // Extracting the user ID from the conversation data
@@ -22,7 +22,7 @@ const Conversation = ({ data, currentUser, online }) => {
       try {
         const { data } = await getUser(userId); // Making an API request to get user data
         setUserData(data); // Updating local state with received user data
-        console.log(data);
+        console.log(userData);
         dispatch({ type: "SAVE_USER", data: data }); // Dispatching a Redux action to save user data
       } catch (error) {
         console.log(error); // Handle errors, e.g., log them or show a notification
