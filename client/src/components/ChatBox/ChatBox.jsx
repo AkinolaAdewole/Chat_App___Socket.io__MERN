@@ -15,6 +15,8 @@ const ChatBox = ({ chat, currentUser, setSendMessage,  receivedMessage }) => {
     setNewMessage(newMessage)
   }
 
+  console.log(getUser);
+
   // fetching data for header
   useEffect(() => {
     const userId = chat?.members?.find((id) => id !== currentUser);
