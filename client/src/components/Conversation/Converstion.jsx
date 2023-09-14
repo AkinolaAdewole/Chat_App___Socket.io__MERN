@@ -10,9 +10,12 @@ const Conversation = ({ data, currentUser, online }) => {
   // Redux dispatch hook for dispatching actions
   const dispatch = useDispatch();
 
+  console.log(getUser);
+
   useEffect(() => {
     // Extracting the user ID from the conversation data
     const userId = data.members.find((id) => id !== currentUser);
+    // console.log(userId);
 
     // Function to fetch user data
     const getUserData = async () => {
