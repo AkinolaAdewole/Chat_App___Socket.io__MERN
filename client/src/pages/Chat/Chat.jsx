@@ -81,7 +81,7 @@ const Chat = () => {
               >
                 <Conversation
                   data={chat}
-                  currentUser={user._id}
+                  currentUserId={user._id}
                   online={checkOnlineStatus(chat)}
                 />
               </div>
