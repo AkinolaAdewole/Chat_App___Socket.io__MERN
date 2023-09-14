@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useRef } from "react";
 import { addMessage, getMessages } from "../../api/MessageRequests";
 import { getUser } from "../../api/UserRequests";
+import { getAllUser } from "../../api/UserRequests";
 import "./ChatBox.css";
 import { format } from "timeago.js";
 import InputEmoji from 'react-input-emoji'
@@ -10,27 +11,37 @@ const ChatBox = ({ chat, currentUser, setSendMessage,  receivedMessage }) => {
   const [userData, setUserData] = useState(null);
   const [messages, setMessages] = useState([]);
   const [newMessage, setNewMessage] = useState("");
+  const [persons, setPersons] = useState([]);
 
   const handleChange = (newMessage)=> {
     setNewMessage(newMessage)
   }
+    useEffect(()=>{
+      const getuzar= async()=>{
+        const { data } = await getAllUser();
+        setPersons(data);
+        console.log(persons);
+      }
 
-  console.log(getUser);
+      getuzar();
+    },[])
 
   // fetching data for header
   useEffect(() => {
-    const userId = chat?.members?.find((id) => id !== currentUser);
+    const id = chat?.members?.find((id) => id !== currentUser);
+
     const getUserData = async () => {
       try {
-        const { data } = await getUser(userId);
+        const { data } = await getUser(id);
         setUserData(data);
+        console.log(userData);
       } catch (error) {
         console.log(error);
       }
     };
 
-    if (chat !== null) getUserData();
-  }, [chat, currentUser]);
+    getUserData();
+  }, []);
 
   // fetch messages
   useEffect(() => {
