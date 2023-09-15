@@ -25,6 +25,7 @@ const Chat = () => {
       try {
         const { data } = await userChats(user._id);
         setChats(data);
+        // console.log(chats);
       } catch (error) {
         console.log(error);
       }
@@ -34,11 +35,13 @@ const Chat = () => {
 
   // Connect to Socket.io
   useEffect(() => {
-    socket.current = io("ws://localhost:8800");
+    socket.current = io("ws://localhost:5000");
     socket.current.emit("new-user-add", user._id);
     socket.current.on("get-users", (users) => {
       setOnlineUsers(users);
     });
+    console.log(onlineUsers);
+    console.log(onlineUsers.username);
   }, [user]);
 
   // Send Message to socket server
@@ -103,7 +106,12 @@ const Chat = () => {
           receivedMessage={receivedMessage}
         />
       </div>
+
+      {/* <div>{onlineUsers.map((uzar)=>(
+        <div>{uzar.username}</div>
+      ))}</div> */}
     </div>
+
   );
 };
 

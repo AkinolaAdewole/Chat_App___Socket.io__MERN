@@ -1,0 +1,17 @@
+This code sets up an Express.js server along with socket.io WebSocket support. Here are the main points explained:
+
+An HTTP server is created using the http.createServer(app) method, where app is your Express.js app.
+
+A socket.io server instance (io) is created using the Server class, and it's configured to allow connections from any origin (*) and 
+specifies accepted HTTP methods.
+
+Routes are imported for your application.
+
+Middleware for body parsing, CORS, and serving static files is configured.
+
+The server listens on the specified PORT.
+
+Routes are added to the Express app.
+
+This code combines your Express.js server and socket.io WebSocket server into a single application. It allows you to handle both HTTP 
+and WebSocket connections within the same application, making it suitable for real-time features like chat.
