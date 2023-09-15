@@ -15,12 +15,12 @@ const Conversation = ({ data, currentUser, online }) => {
   useEffect(() => {
     // Extracting the user ID from the conversation data
     const userId = data.members.find((id) => id !== currentUser);
-    console.log(userId);
+    // console.log(userId);
 
     // Function to fetch user data
     const getUserData = async () => {
       try {
-        const { data } = await getUser(userId); // Making an API request to get user data
+        const { data } = await getUser(); // Making an API request to get user data
         setUserData(data); // Updating local state with received user data
         console.log(userData);
         dispatch({ type: "SAVE_USER", data: data }); // Dispatching a Redux action to save user data
@@ -29,7 +29,8 @@ const Conversation = ({ data, currentUser, online }) => {
       }
     };
 
-    getUserData(); // Call the function to fetch user data
+    // Call the function to fetch user data
+    getUserData(); 
   }, []); // Empty dependency array indicates that this effect runs once on component mount
 
   return (
