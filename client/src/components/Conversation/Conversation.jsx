@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { getUser } from "../../api/UserRequests"; // Importing a function for getting user data
 
-const Conversation = ({ data, currentUser, online }) => {
+const Conversation = ({ data, currentUserId, online }) => {
   // Define local state to store user data
   const [userData, setUserData] = useState(null);
 
@@ -14,8 +14,8 @@ const Conversation = ({ data, currentUser, online }) => {
 
   useEffect(() => {
     // Extracting the user ID from the conversation data
-    const userId = data.members.find((id) => id !== currentUser);
-    // console.log(userId);
+    const userId = data.members.find((id) => id !== currentUserId);
+    console.log(userId);
 
     // Function to fetch user data
     const getUserData = async () => {

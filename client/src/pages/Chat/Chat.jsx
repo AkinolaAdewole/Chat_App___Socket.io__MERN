@@ -13,19 +13,21 @@ const Chat = () => {
   const dispatch = useDispatch();
   const socket = useRef();
   const { user } = useSelector((state) => state.authReducer.authData);
+  // console.log(user);
 
   const [chats, setChats] = useState([]);
   const [onlineUsers, setOnlineUsers] = useState([]);
   const [currentChat, setCurrentChat] = useState(null);
   const [sendMessage, setSendMessage] = useState(null);
   const [receivedMessage, setReceivedMessage] = useState(null);
+
   // Get the chat in chat section
   useEffect(() => {
     const getChats = async () => {
       try {
         const { data } = await userChats(user._id);
         setChats(data);
-        // console.log(chats);
+        console.log(data);
       } catch (error) {
         console.log(error);
       }
@@ -40,8 +42,7 @@ const Chat = () => {
     socket.current.on("get-users", (users) => {
       setOnlineUsers(users);
     });
-    console.log(onlineUsers);
-    console.log(onlineUsers.username);
+    // console.log(onlineUsers);
   }, [user]);
 
   // Send Message to socket server
@@ -85,7 +86,7 @@ const Chat = () => {
                 <Conversation
                   data={chat}
                   currentUserId={user._id}
-                  online={checkOnlineStatus(chat)}
+                  // online={checkOnlineStatus(chat)}
                 />
               </div>
             ))}
